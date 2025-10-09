@@ -92,11 +92,9 @@ const FlashSales = () => {
           </div>
           {/* .............slider......  */}
           <Slider {...settings}>
-            <div>
-              {products.slice(0, 9).map((item) => (
-                <FlashSaleCard key={item.id} />
-              ))}
-            </div>
+            {products.slice(0, 9).map((item) => (
+              <FlashSaleCard key={item.id} />
+            ))}
           </Slider>
           {/* ....slider ....... */}
         </div>

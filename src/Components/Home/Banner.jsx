@@ -10,10 +10,6 @@ import { Link } from "react-router";
 import Slider from "react-slick";
 
 const Banner = () => {
-  // const imgOne = new URL("../../assets/bannerSliderImg1.png", import.meta.url)
-  //   .href;
-  // const imgTwo = new URL("../../assets/bannerSliderImg2.png", import.meta.url)
-  //   .href;
   const settings = {
     dots: true,
     // fade: true,
