@@ -1,11 +1,11 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { useEffect, useState } from "react";
-import axios from "axios";
+// import { useEffect, useState } from "react";
+// import axios from "axios";
 import FlashSaleCard from "./FlashSaleCard";
-const FlashSales = () => {
-  const [products, setProducts] = useState([]);
+const FlashSales = ({ products }) => {
+  //   const [products, setProducts] = useState([]);
   // slider settings ..........
   var settings = {
     dots: true,
@@ -45,15 +45,15 @@ const FlashSales = () => {
   };
 
   // api fetching
-  useEffect(() => {
-    axios
-      .get("https://dummyjson.com/products")
-      .then((res) => {
-        setProducts(res.data.products);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-  console.log(products);
+  //   useEffect(() => {
+  //     axios
+  //       .get("https://dummyjson.com/products")
+  //       .then((res) => {
+  //         setProducts(res.data.products);
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }, []);
+  //   console.log(products);
   return (
     <div>
       <div className="container">
@@ -93,7 +93,7 @@ const FlashSales = () => {
           {/* .............slider......  */}
           <Slider {...settings}>
             {products.slice(0, 9).map((item) => (
-              <FlashSaleCard key={item.id} />
+              <FlashSaleCard key={item.id} images={item.images[0]} />
             ))}
           </Slider>
           {/* ....slider ....... */}

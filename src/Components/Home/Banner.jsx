@@ -9,7 +9,7 @@ import { FaApple } from "react-icons/fa";
 import { Link } from "react-router";
 import Slider from "react-slick";
 
-const Banner = () => {
+const Banner = ({ products }) => {
   const settings = {
     dots: true,
     // fade: true,
@@ -26,28 +26,38 @@ const Banner = () => {
         <div className="mainDiv flex justify-between ">
           <div className="border-r border-[#b3b3b3] pr-6">
             <div className="category  pt-10 flex flex-col  gap-4">
-              <div className="text-lg font-poppins text-black flex justify-between items-center  w-[217px]">
-                Woman’s Fashion
-                <IoIosArrowForward className="pt-[2px] text-[24px]" />
-              </div>
-              <div className="text-lg font-poppins text-black flex justify-between items-center  w-[217px]">
+              {[...new Set(products?.map((item) => item.category))].map(
+                (value) => (
+                  <div
+                    key={value}
+                    className="text-lg font-poppins text-black flex justify-between items-center  w-[217px]"
+                  >
+                    {value}
+                    <IoIosArrowForward className="pt-[2px] text-[24px]" />
+                  </div>
+                )
+              )}
+
+              {/* </div> */}
+              {/* <div className="text-lg font-poppins text-black flex justify-between items-center  w-[217px]">
                 Man’s Fashion
                 <IoIosArrowForward className="pt-[2px] text-[24px]" />
               </div>
               <div className="text-lg font-poppins text-black flex justify-between items-center  w-[217px]">
                 Electronics
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="pt-10 w-[892px]">
             <Slider {...settings}>
               {/* Slide 1 */}
               <div
-                className="sliderDiv   h-[400px] flex flex-col gap-5 pt-[58px] pl-[64px] pb-[47px] bg-black bg-cover bg-center rounded-lg"
+                className="sliderDiv  flex flex-col gap-5 pt-[58px] pl-[64px] pb-[47px] bg-black bg-cover bg-center rounded-lg"
                 style={{
-                  backgroundImage: `url(${bannerimgone})`,
+                  backgroundImage: `ur`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
+                  // width: "496px",
                 }}
               >
                 <div className="flex items-center gap-6">
