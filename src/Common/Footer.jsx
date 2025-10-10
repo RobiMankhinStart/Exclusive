@@ -1,11 +1,12 @@
 import React from "react";
+import { FaRegCopyright } from "react-icons/fa";
 import { TbArrowBigRightLines } from "react-icons/tb";
 
 const Footer = () => {
   return (
-    <div className="bg-black pt-[80px] px-[135px] pb-[124px]">
+    <div className="bg-black pt-[80px]  ">
       <div className="container">
-        <div className="mainDiv flex justify-between items-start">
+        <div className="mainDiv px-[135px] mb-[60px] flex justify-between items-start">
           <div className="flex flex-col justify-center  gap-6">
             <h3 className="text-white text-[24px] font-bold font-inter">
               Exclusive
@@ -64,6 +65,10 @@ const Footer = () => {
           </div>
           <div className="flex flex-col justify-center  gap-6"></div>
         </div>
+      </div>
+      <div className="pt-4 pb-6 text-lg text-[#918686] font-poppins  border-t border-[#867b7b] flex items-center justify-center">
+        <FaRegCopyright />
+        <p>Copyright Rimel 2022. All right reserved</p>
       </div>
     </div>
   );
