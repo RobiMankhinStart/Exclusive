@@ -3,7 +3,7 @@ import sliImg from "../../assets/controller.png";
 import { FaRegHeart, FaStar } from "react-icons/fa";
 import { IoEyeOutline } from "react-icons/io5";
 
-const FlashSaleCard = ({ images }) => {
+const FlashSaleCard = ({ item }) => {
   const [hid, setHid] = useState(false);
   return (
     <div>
@@ -26,7 +26,7 @@ const FlashSaleCard = ({ images }) => {
           </div>
         </div>
         <div className="w-full fle py-[35px] px-10 rounded-md bg-[#f5f5f5]">
-          <img className=" w-[172px]" src={images} alt="slider_IMG" />
+          <img className=" w-[172px]" src={item.images[0]} alt="slider_IMG" />
         </div>
 
         <button

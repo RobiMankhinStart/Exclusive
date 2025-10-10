@@ -1,11 +1,8 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-// import { useEffect, useState } from "react";
-// import axios from "axios";
 import FlashSaleCard from "./FlashSaleCard";
 const FlashSales = ({ products }) => {
-  //   const [products, setProducts] = useState([]);
   // slider settings ..........
   var settings = {
     dots: true,
@@ -44,18 +41,8 @@ const FlashSales = ({ products }) => {
     ],
   };
 
-  // api fetching
-  //   useEffect(() => {
-  //     axios
-  //       .get("https://dummyjson.com/products")
-  //       .then((res) => {
-  //         setProducts(res.data.products);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }, []);
-  //   console.log(products);
   return (
-    <div>
+    <div className="pb-20">
       <div className="container">
         <div className="mainDiv">
           <div className="flex gap-4 items-center rounded-[4px]">
@@ -93,10 +80,15 @@ const FlashSales = ({ products }) => {
           {/* .............slider......  */}
           <Slider {...settings}>
             {products.slice(0, 9).map((item) => (
-              <FlashSaleCard key={item.id} images={item.images[0]} />
+              <FlashSaleCard key={item.id} item={item} />
             ))}
           </Slider>
           {/* ....slider ....... */}
+          <div className="mt-14  flex justify-center border-b border-[#b3b3b3] pb-[60px]">
+            <button className=" text-lg font-poppins font-medium text-white px-12 py-4 bg-[#DB4444] rounded-md ">
+              View All Products
+            </button>
+          </div>
         </div>
       </div>
     </div>
