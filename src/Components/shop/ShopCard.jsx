@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaRegHeart, FaStar } from "react-icons/fa";
 import { IoEyeOutline } from "react-icons/io5";
 
-const FlashSaleCard = ({ item }) => {
+const ShopCard = ({ item }) => {
   const [hid, setHid] = useState(false);
   return (
     <div>
@@ -60,4 +60,4 @@ const FlashSaleCard = ({ item }) => {
   );
 };
 
-export default FlashSaleCard;
+export default ShopCard;
