@@ -14,16 +14,16 @@ const ShopCard = ({ item, addToCart }) => {
         className="relative w-[270px] h-[350px] flex flex-col justify-center gap-5"
       >
         {/* Top badge and icons */}
-        <div className="absolute top-8 flex gap-[150px] px-3">
+        <div className="absolute top-3 flex gap-[150px]  px-3">
           <p className="bg-[#DB4444] h-7 rounded-md text-sm font-poppins flex items-center px-3 text-white">
             -30%
           </p>
-          <div className="flex flex-col items-center justify-center gap-4">
-            <button className="cursor-pointer hover:scale-110 duration-300 p-[5px] bg-white rounded-full">
-              <FaRegHeart className="text-[24px]" />
+          <div className="flex flex-col items-center justify-center gap-1">
+            <button className="cursor-pointer hover:scale-110 duration-300 p-1 bg-white rounded-full">
+              <FaRegHeart className="text-[20px]" />
             </button>
-            <button className="cursor-pointer hover:scale-110 duration-300 p-[5px] bg-white rounded-full">
-              <IoEyeOutline className="text-[24px]" />
+            <button className="cursor-pointer hover:scale-110 duration-300 p-1 bg-white rounded-full">
+              <IoEyeOutline className="text-[20px]" />
             </button>
           </div>
         </div>
