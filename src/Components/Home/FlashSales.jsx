@@ -88,7 +88,7 @@ const FlashSales = ({ products }) => {
           <div className="mt-14  flex justify-center border-b border-[#b3b3b3] pb-[60px]">
             <Link
               to={"/shop"}
-              className=" text-lg font-poppins font-medium text-white px-12 py-4 bg-[#DB4444] rounded-md "
+              className="hover:bg-[#c03232] hover:scale-110 duration-300 text-lg font-poppins font-medium text-white px-12 py-4 bg-[#DB4444] rounded-md "
             >
               View All Products
             </Link>

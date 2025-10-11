@@ -59,7 +59,7 @@ const BestSelling = ({ products }) => {
             {/* <div className="flex items-center gap-[17px] "> */}
             <Link
               to={"/shop"}
-              className=" text-lg font-poppins font-medium text-white px-12 py-4 bg-[#DB4444] rounded-md "
+              className="hover:bg-[#c03232] hover:scale-110 duration-300 text-lg font-poppins font-medium text-white px-12 py-4 bg-[#DB4444] rounded-md "
             >
               View All
             </Link>
