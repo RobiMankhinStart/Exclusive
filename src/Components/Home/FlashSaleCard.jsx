@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaRegHeart, FaStar } from "react-icons/fa";
 import { IoEyeOutline } from "react-icons/io5";
 
-const FlashSaleCard = ({ item }) => {
+const FlashSaleCard = ({ item, addToCart }) => {
   const [hid, setHid] = useState(false);
   return (
     <div>
@@ -29,6 +29,7 @@ const FlashSaleCard = ({ item }) => {
         </div>
 
         <button
+          onClick={addToCart}
           className={`${
             hid
               ? " opacity-100 translate-y-0"

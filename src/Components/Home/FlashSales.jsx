@@ -3,6 +3,8 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import FlashSaleCard from "./FlashSaleCard";
 import { Link } from "react-router";
+import { addTocart } from "../../ProductSlice";
+import { useDispatch } from "react-redux";
 const FlashSales = ({ products }) => {
   // slider settings ..........
   var settings = {
@@ -41,7 +43,15 @@ const FlashSales = ({ products }) => {
       },
     ],
   };
+  const dispatch = useDispatch();
 
+  // add to cart function
+  const addToCart = (item) => {
+    const proDuctids = JSON.parse(localStorage.getItem("proDUCTid")) || [];
+    proDuctids.push(item);
+    localStorage.setItem("proDUCTid", JSON.stringify(proDuctids));
+    dispatch(addTocart(item));
+  };
   return (
     <div className="pb-20">
       <div className="container">
@@ -81,7 +91,11 @@ const FlashSales = ({ products }) => {
           {/* .............slider......  */}
           <Slider {...settings}>
             {products.slice(0, 9).map((item) => (
-              <FlashSaleCard key={item.id} item={item} />
+              <FlashSaleCard
+                addToCart={() => addToCart(item.id)}
+                key={item.id}
+                item={item}
+              />
             ))}
           </Slider>
           {/* ....slider ....... */}
