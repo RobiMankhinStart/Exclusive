@@ -3,7 +3,7 @@ import { FaRegHeart, FaStar } from "react-icons/fa";
 import { IoEyeOutline } from "react-icons/io5";
 import { Link } from "react-router";
 
-const ShopCard = ({ item }) => {
+const ShopCard = ({ item, addToCart }) => {
   const [hid, setHid] = useState(false);
 
   return (
@@ -42,6 +42,7 @@ const ShopCard = ({ item }) => {
 
         {/* Add to Cart button */}
         <button
+          onClick={addToCart}
           className={`${
             hid
               ? "opacity-100 translate-y-0"

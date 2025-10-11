@@ -4,8 +4,16 @@ import { FiUser } from "react-icons/fi";
 import { CiSearch } from "react-icons/ci";
 import { Link } from "react-router";
 import { IoIosArrowDown } from "react-icons/io";
+import { useState } from "react";
+
+import Cart from "./Cart";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const reduxCardIds = useSelector((state) => state.proSlice.cartItems);
+  console.log("reduxCardIds : ", reduxCardIds);
+
+  const [cartOpen, setCartOpen] = useState(false);
   return (
     <div className=" border-b border-[#b3b3b3]">
       <div className="top bg-black py-3 ">
@@ -94,8 +102,19 @@ const Navbar = () => {
             <div className="text-[32px] text-black cursor-pointer hover:text-[#989898] hover:scale-110 duration-200">
               <IoMdHeartEmpty />
             </div>
-            <div className="text-[32px] text-black cursor-pointer hover:text-[#989898] hover:scale-110 duration-200">
+            {/* <div className="text-[32px] text-black cursor-pointer hover:text-[#989898] hover:scale-110 duration-200">
               <IoCartOutline />
+            </div> */}
+            {/* Cart Toggle */}
+            <div
+              onClick={() => setCartOpen(!cartOpen)}
+              className="text-[32px] text-black cursor-pointer hover:text-[#989898] hover:scale-110 duration-200 relative"
+            >
+              <IoCartOutline />
+              {/* Cart Count Example */}
+              <span className="absolute -top-1 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                {reduxCardIds?.length || 0}
+              </span>
             </div>
             <div className="text-[32px] text-black cursor-pointer hover:text-[#989898] hover:scale-110 duration-200">
               <FiUser />
@@ -103,6 +122,8 @@ const Navbar = () => {
           </div>
         </nav>
       </div>
+      {/* ===== Slide-Out Cart ===== */}
+      {cartOpen && <Cart cartOpen={cartOpen} setCartOpen={setCartOpen} />}
     </div>
   );
 };

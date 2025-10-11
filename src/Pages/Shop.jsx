@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ShopCard from "../Components/shop/ShopCard";
+import { useDispatch } from "react-redux";
+import { addTocart } from "../ProductSlice";
 const Shop = () => {
   const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
 
   // api fetching
   useEffect(() => {
@@ -14,6 +17,14 @@ const Shop = () => {
       .catch((err) => console.log(err));
   }, []);
   // console.log(products);
+
+  // add to cart function
+  const addToCart = (item) => {
+    const proDuctids = JSON.parse(localStorage.getItem("proDUCTid")) || [];
+    proDuctids.push(item);
+    localStorage.setItem("proDUCTid", JSON.stringify(proDuctids));
+    dispatch(addTocart(item));
+  };
   return (
     <div className="pb-[140px]">
       <div className="container">
@@ -31,7 +42,11 @@ const Shop = () => {
 
           <div className="flex flex-wrap justify-center items-center gap-12">
             {products.map((item) => (
-              <ShopCard key={item.id} item={item} />
+              <ShopCard
+                key={item.id}
+                addToCart={() => addToCart(item.id)}
+                item={item}
+              />
             ))}
           </div>
         </div>
