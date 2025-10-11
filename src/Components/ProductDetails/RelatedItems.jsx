@@ -1,9 +1,11 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import FlashSaleCard from "./FlashSaleCard";
 import { Link } from "react-router";
-const BestSelling = ({ products }) => {
+import RelatedItemCard from "./RelatedItemCard";
+import { useEffect, useState } from "react";
+import axios from "axios";
+const RelatedItems = ({ product }) => {
   // slider settings ..........
   var settings = {
     dots: true,
@@ -42,40 +44,53 @@ const BestSelling = ({ products }) => {
     ],
   };
 
+  // fetching .............
+  const [products, setProducts] = useState([]);
+
+  // api fetching
+  useEffect(() => {
+    axios
+      .get("https://dummyjson.com/products")
+      .then((res) => {
+        const resData = res.data.products;
+        const relatedItem = resData.filter(
+          (i) => i.category == product.category
+        );
+        setProducts(relatedItem);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+  // console.log(products);
   return (
-    <div className="pb-[140px]">
+    <div className="pb-20">
       <div className="container">
         <div className="mainDiv">
-          <div className="flex gap-4 items-center rounded-[4px]">
+          <div className="mt-12 mb-10 flex gap-4 items-center rounded-[4px]">
             <div className="w-5 h-10 bg-[#DB4444]"></div>
             <h3 className="font-semibold font-poppins text-[16px] text-[#DB4444]">
-              This Month
+              Related Items
             </h3>
           </div>
-          <div className=" flex items-center justify-between mt-12 mb-10 gap-[87px]">
-            <h3 className="text-[36px] font-inter font-semibold">
-              Best Selling Products
-            </h3>
-            {/* <div className="flex items-center gap-[17px] "> */}
-            <Link
-              to={"/shop"}
-              className=" text-lg font-poppins font-medium text-white px-12 py-4 bg-[#DB4444] rounded-md "
-            >
-              View All
-            </Link>
-            {/* </div> */}
-          </div>
+
           {/* .............slider......  */}
           <Slider {...settings}>
-            {products.slice(9, 15).map((item) => (
-              <FlashSaleCard key={item.id} item={item} />
+            {products?.slice(0, 9).map((item) => (
+              <RelatedItemCard key={item.id} item={item} />
             ))}
           </Slider>
           {/* ....slider ....... */}
+          <div className="mt-14  flex justify-center border-b border-[#b3b3b3] pb-[60px]">
+            <Link
+              to={"/shop"}
+              className="hover:bg-[#c43434] hover:scale-110 duration-300 text-lg font-poppins font-medium text-white px-12 py-3 bg-[#DB4444] rounded-md "
+            >
+              Go to Shop
+            </Link>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default BestSelling;
+export default RelatedItems;
