@@ -1,124 +1,236 @@
-import { useState } from "react";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoCartOutline } from "react-icons/io5";
 import { FiUser } from "react-icons/fi";
 import { CiSearch } from "react-icons/ci";
-import { IoMenu, IoClose } from "react-icons/io5";
 import { Link } from "react-router";
-import { useSelector } from "react-redux";
+import { IoIosArrowDown } from "react-icons/io";
+import { useState } from "react";
+import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 import Cart from "./Cart";
+import { useSelector } from "react-redux";
 
 const MobileNavbar = () => {
   const reduxCardIds = useSelector((state) => state.proSlice.cartItems);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const closeMenu = () => setMenuOpen(false);
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
 
   return (
-    <div className="lg:hidden fixed top-0 left-0 right-0 bg-white z-40 shadow-md">
-      {/* Top Offer Bar */}
-      <div className="bg-black text-white text-center text-sm py-2 px-3 font-poppins">
-        Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!{" "}
-        <Link to="/shop" className="underline font-semibold">
-          Shop Now
-        </Link>
-      </div>
-
-      {/* Navbar Main */}
-      <div className="flex items-center justify-between px-4 py-3">
-        {/* Logo */}
-        <Link
-          to="/"
-          className="text-[25px] font-inter font-semibold text-gray-700"
-        >
-          <span className="font-bold text-[27px] text-gray-600 font-poppins">
-            E
-          </span>
-          x
-          <span className="font-bold text-[27px] text-gray-600 font-poppins">
-            C
-          </span>
-          lu
-          <span className="font-bold text-[27px] text-gray-600 font-poppins">
-            S
-          </span>
-          ive
-        </Link>
-
-        {/* Right Icons */}
-        <div className="flex items-center gap-4">
-          <CiSearch className="text-[26px] text-gray-700 cursor-pointer" />
-          <div
-            onClick={() => setCartOpen(true)}
-            className="relative cursor-pointer text-gray-700"
-          >
-            <IoCartOutline className="text-[26px]" />
-            <span className="absolute -top-1 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-              {reduxCardIds?.length || 0}
-            </span>
+    <>
+      {/* Top Banner - Hidden on mobile */}
+      <div className="bg-black py-3 hidden lg:block">
+        <div className="container mx-auto px-4 flex justify-end items-center">
+          <div className="flex items-center justify-center gap-2 mr-[231px]">
+            <p className="text-[14px] font-poppins text-white">
+              Summer Sale For All Swim Suits And Free Express Delivery - OFF
+              50%!
+            </p>
+            <Link
+              className="text-[14px] underline font-semibold font-poppins text-white"
+              to={"/shop"}
+            >
+              ShopNow
+            </Link>
           </div>
-          <Link to="/login">
-            <FiUser className="text-[26px] text-gray-700 cursor-pointer" />
-          </Link>
-          <button
-            onClick={() => setMenuOpen((prev) => !prev)}
-            className="text-[28px] text-gray-700 focus:outline-none"
-          >
-            {menuOpen ? <IoClose /> : <IoMenu />}
-          </button>
-        </div>
-      </div>
-
-      {/* Search Bar */}
-      <div className="px-4 pb-3">
-        <div className="flex items-center gap-3 bg-[#F5F5F5] rounded-lg px-3 py-2">
-          <CiSearch className="text-[22px] text-gray-700" />
-          <input
-            type="text"
-            placeholder="What are you looking for?"
-            className="bg-transparent outline-none flex-1 text-[14px] text-gray-700"
-          />
-        </div>
-      </div>
-
-      {/* Sidebar Menu */}
-      <div
-        className={`fixed top-0 left-0 h-full w-[75%] sm:w-[60%] bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out ${
-          menuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        <div className="flex flex-col items-center justify-center p-6 pt-20 space-y-6 text-gray-800 font-inter text-lg font-medium overflow-y-auto h-full">
-          <Link to="/" className="inline-block">
-            Home
-          </Link>
-          <Link to="/contact" className="inline-block">
-            Contact
-          </Link>
-          <Link to="/about" className="inline-block">
-            About
-          </Link>
-          <Link to="/signup" className="inline-block">
-            Sign Up
-          </Link>
-
-          {/* Icons Row */}
-          <div className="flex gap-4 pt-8 text-[28px]">
-            <IoMdHeartEmpty className="hover:text-red-500 cursor-pointer" />
-            <FiUser className="hover:text-gray-500 cursor-pointer" />
+          <div className="text-white font-poppins flex items-center gap-[5px] justify-center">
+            English <IoIosArrowDown className="text-[24px] pt-[2px]" />
           </div>
         </div>
       </div>
 
-      {/* Overlay */}
-      {menuOpen && (
-        <div
-          onClick={closeMenu}
-          className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-40 transition-opacity duration-300"
-        ></div>
-      )}
+      {/* Main Navbar */}
+      <div className="bg-white fixed top-0 left-0 right-0 z-50 py-4 border-b border-[#b3b3b3]">
+        <div className="container mx-auto px-4">
+          {/* Mobile Header */}
+          <div className="flex lg:hidden justify-between items-center">
+            {/* Mobile Menu Button */}
+            <button
+              onClick={toggleMobileMenu}
+              className="text-2xl text-gray-700 p-2"
+            >
+              {mobileMenuOpen ? <HiOutlineX /> : <HiOutlineMenu />}
+            </button>
 
-      {/* Slide-Out Cart */}
+            {/* Logo - Centered on mobile */}
+            <Link to={"/"} className="text-xl font-inter font-semibold">
+              <span className="font-bold text-gray-600">E</span>x
+              <span className="font-bold text-gray-600">C</span>lu
+              <span className="font-bold text-gray-600">S</span>ive
+            </Link>
+
+            {/* Mobile Icons */}
+            <div className="flex items-center gap-4">
+              <div className="text-2xl text-black cursor-pointer">
+                <CiSearch />
+              </div>
+              <div
+                onClick={() => setCartOpen(!cartOpen)}
+                className="text-2xl text-black cursor-pointer relative"
+              >
+                <IoCartOutline />
+                <span className="absolute -top-1 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {reduxCardIds?.length || 0}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex justify-between items-center">
+            {/* Logo */}
+            <Link to={"/"} className="text-[25px] font-inter font-semibold">
+              <span className="font-bold text-[27px] text-gray-600 font-poppins">
+                E
+              </span>
+              x
+              <span className="font-bold text-[27px] text-gray-600 font-poppins">
+                C
+              </span>
+              lu
+              <span className="font-bold text-[27px] text-gray-600 font-poppins">
+                S
+              </span>
+              ive
+            </Link>
+
+            {/* Navigation Links */}
+            <ul className="flex text-[#989898] items-center gap-[52px]">
+              <li className="nav-link">
+                <Link to={"/"}>Home</Link>
+              </li>
+              <li className="nav-link">
+                <Link to={"/contact"}>Contact</Link>
+              </li>
+              <li className="nav-link">
+                <Link to={"/about"}>About</Link>
+              </li>
+              <li className="nav-link">
+                <Link to={"/signup"}>Sign Up</Link>
+              </li>
+            </ul>
+
+            {/* Search Bar */}
+            <div className="py-[10px] pl-5 pr-3 bg-[#F5F5F5] text-[#989898] rounded-[8px] flex items-center gap-[34px]">
+              <input
+                className="outline-none text-[12px] font-poppins bg-transparent w-48"
+                type="text"
+                placeholder="What are you looking for?"
+              />
+              <CiSearch className="text-[24px] text-black" />
+            </div>
+
+            {/* Action Icons */}
+            <div className="flex items-center gap-6">
+              <div className="text-[32px] text-black cursor-pointer hover:text-[#989898] hover:scale-110 duration-200">
+                <IoMdHeartEmpty />
+              </div>
+
+              <div
+                onClick={() => setCartOpen(!cartOpen)}
+                className="text-[32px] text-black cursor-pointer hover:text-[#989898] hover:scale-110 duration-200 relative"
+              >
+                <IoCartOutline />
+                <span className="absolute -top-1 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {reduxCardIds?.length || 0}
+                </span>
+              </div>
+
+              <div className="text-[32px] text-black cursor-pointer hover:text-[#989898] hover:scale-110 duration-200">
+                <Link to={"/login"}>
+                  <FiUser />
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Search Bar - Hidden by default, shown when needed */}
+          <div className="lg:hidden mt-4 hidden">
+            <div className="py-3 px-4 bg-[#F5F5F5] text-[#989898] rounded-[8px] flex items-center gap-3">
+              <input
+                className="outline-none text-sm font-poppins bg-transparent flex-1"
+                type="text"
+                placeholder="What are you looking for?"
+              />
+              <CiSearch className="text-xl text-black" />
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Menu Overlay */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden fixed inset-0 z-40 bg-white mt-16">
+            <div className="container mx-auto px-4 py-6">
+              {/* Mobile Navigation Links */}
+              <ul className="flex flex-col space-y-6 text-lg">
+                <li>
+                  <Link
+                    to={"/"}
+                    className="block py-3 text-gray-700 font-medium border-b border-gray-200"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/contact"}
+                    className="block py-3 text-gray-700 font-medium border-b border-gray-200"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/about"}
+                    className="block py-3 text-gray-700 font-medium border-b border-gray-200"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/signup"}
+                    className="block py-3 text-gray-700 font-medium border-b border-gray-200"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Sign Up
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/login"}
+                    className="block py-3 text-gray-700 font-medium border-b border-gray-200"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Login
+                  </Link>
+                </li>
+              </ul>
+
+              {/* Mobile Additional Actions */}
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <div className="flex items-center justify-around">
+                  <div className="text-2xl text-black cursor-pointer text-center">
+                    <IoMdHeartEmpty />
+                    <span className="block text-xs mt-1">Wishlist</span>
+                  </div>
+                  <div className="text-2xl text-black cursor-pointer text-center relative">
+                    <FiUser />
+                    <span className="block text-xs mt-1">Profile</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Cart Component */}
       {cartOpen && (
         <Cart
           reduxCardIds={reduxCardIds}
@@ -126,7 +238,10 @@ const MobileNavbar = () => {
           setCartOpen={setCartOpen}
         />
       )}
-    </div>
+
+      {/* Spacer to prevent content from being hidden under fixed navbar */}
+      <div className="h-16 lg:h-28"></div>
+    </>
   );
 };
 
