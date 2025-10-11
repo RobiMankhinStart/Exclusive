@@ -11,11 +11,10 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const reduxCardIds = useSelector((state) => state.proSlice.cartItems);
-  console.log("reduxCardIds : ", reduxCardIds);
 
   const [cartOpen, setCartOpen] = useState(false);
   return (
-    <div className=" border-b border-[#b3b3b3]">
+    <div className="bg-white fixed top-[-4%] left-0 right-0 z-20 py-[27px] hidden lg:block dark:text-white border-b border-[#b3b3b3]">
       <div className="top bg-black py-3 ">
         <div className="container flex justify-end items-center">
           <div className="flex items-center justify-center gap-2 mr-[231px]">
@@ -102,9 +101,7 @@ const Navbar = () => {
             <div className="text-[32px] text-black cursor-pointer hover:text-[#989898] hover:scale-110 duration-200">
               <IoMdHeartEmpty />
             </div>
-            {/* <div className="text-[32px] text-black cursor-pointer hover:text-[#989898] hover:scale-110 duration-200">
-              <IoCartOutline />
-            </div> */}
+
             {/* Cart Toggle */}
             <div
               onClick={() => setCartOpen(!cartOpen)}
@@ -117,13 +114,21 @@ const Navbar = () => {
               </span>
             </div>
             <div className="text-[32px] text-black cursor-pointer hover:text-[#989898] hover:scale-110 duration-200">
-              <FiUser />
+              <Link to={"/login"}>
+                <FiUser />
+              </Link>
             </div>
           </div>
         </nav>
       </div>
       {/* ===== Slide-Out Cart ===== */}
-      {cartOpen && <Cart cartOpen={cartOpen} setCartOpen={setCartOpen} />}
+      {cartOpen && (
+        <Cart
+          reduxCardIds={reduxCardIds}
+          cartOpen={cartOpen}
+          setCartOpen={setCartOpen}
+        />
+      )}
     </div>
   );
 };

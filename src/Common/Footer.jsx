@@ -4,7 +4,7 @@ import { TbArrowBigRightLines } from "react-icons/tb";
 
 const Footer = () => {
   return (
-    <div className="bg-black pt-[80px]  ">
+    <div className="bg-black pt-[80px] relative left-0 right-0 w-full ">
       <div className="container">
         <div className="mainDiv px-[135px] mb-[60px] flex justify-between items-start">
           <div className="flex flex-col justify-center  gap-6">

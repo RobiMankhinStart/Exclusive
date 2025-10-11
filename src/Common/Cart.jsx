@@ -25,10 +25,7 @@ const Cart = ({ setCartOpen, cartOpen, reduxCardIds }) => {
   }, []);
   // console.log(products);
   // total Money................
-  const subtotal = cartItems.reduce(
-    (acc, item) => acc + item.price * item.qty,
-    0
-  );
+  const subtotal = cartItems.reduce((acc, item) => acc + item.price, 0);
 
   // ................remove from cart .........
   const removeItem = (proID) => {

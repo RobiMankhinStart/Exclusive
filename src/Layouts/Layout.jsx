@@ -1,13 +1,16 @@
-import React from "react";
 import { Outlet } from "react-router";
 import Navbar from "../Common/Navbar";
 import Footer from "../Common/Footer";
+import MobileNavbar from "../Common/MobileNavbar";
 
 const Layout = () => {
   return (
     <div>
       <Navbar />
-      <Outlet />
+      {/* <MobileNavbar /> */}
+      <div className="mt-[202px]">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
