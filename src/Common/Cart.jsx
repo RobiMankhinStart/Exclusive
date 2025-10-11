@@ -51,9 +51,9 @@ const Cart = ({ setCartOpen, cartOpen, reduxCardIds }) => {
       >
         {/* Header */}
         <div className="flex justify-between items-center p-5 border-b">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center w-[50%] justify-between">
             <h2 className="text-xl font-semibold">Shopping Cart</h2>
-            <p>
+            <p className="font-semibold font-inter mt-1 text-[18px]">
               <span>Total Items : </span>
               {reduxCardIds?.length || 0}
             </p>
