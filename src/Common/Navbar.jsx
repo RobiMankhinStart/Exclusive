@@ -36,7 +36,10 @@ const Navbar = () => {
       </div>
       <div className="container pt-10 pb-4">
         <nav className="flex justify-between items-center">
-          <Link to={"/"} className="text-[25px] font-inter font-semibold">
+          <Link
+            to={"/"}
+            className="hover:scale-110 duration-300 cursor-pointer text-[25px] font-inter font-semibold"
+          >
             <span className="font-bold text-[27px] text-gray-600 font-poppins">
               E
             </span>
@@ -51,7 +54,7 @@ const Navbar = () => {
             ive
           </Link>
 
-          <ul className="flex text-[#989898] items-center gap-[52px]">
+          <ul className="flex text-[#989898] items-center gap-10">
             <li
               className="relative font-inter text-lg font-medium cursor-pointer
       after:content-[''] after:absolute after:left-0 after:bottom-[-6px]

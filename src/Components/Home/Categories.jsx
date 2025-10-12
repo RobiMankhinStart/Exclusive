@@ -15,7 +15,7 @@ const Categories = ({ products }) => {
           <h2 className="text-[36px] font-semibold font-inter mt-5 mb-14">
             Browse By Category
           </h2>
-          <div className="flex items-center justify-center gap-[30px] border-b border-[#b3b3b3] pb-[70px] ">
+          <div className="flex flex-wrap items-center justify-center gap-[30px] border-b border-[#b3b3b3] pb-[70px] ">
             {[...new Set(products?.map((item) => item.category))].map((p) => (
               <div
                 key={p}

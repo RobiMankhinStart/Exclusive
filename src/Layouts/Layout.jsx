@@ -7,8 +7,8 @@ const Layout = () => {
   return (
     <div>
       <Navbar />
-      {/* <MobileNavbar /> */}
-      <div className="mt-[202px]">
+      <MobileNavbar />
+      <div className="lg:mt-[190px] mt-[322px]">
         <Outlet />
       </div>
       <Footer />

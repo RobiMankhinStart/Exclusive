@@ -63,7 +63,7 @@ const BestSelling = ({ products }) => {
               This Month
             </h3>
           </div>
-          <div className=" flex items-center justify-between mt-12 mb-10 gap-[87px]">
+          <div className=" flex flex-col md:flex-row items-center justify-between mt-12 mb-10 gap-[87px]">
             <h3 className="text-[36px] font-inter font-semibold">
               Best Selling Products
             </h3>
