@@ -3,12 +3,22 @@ import React, { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import { useParams } from "react-router";
 import RelatedItems from "../Components/ProductDetails/RelatedItems";
+import { useDispatch } from "react-redux";
+import { addTocart } from "../ProductSlice";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [mainImage, setMainImage] = useState("");
+  const dispatch = useDispatch();
 
+  // add to cart function
+  const addToCartD = (item) => {
+    const proDuctids = JSON.parse(localStorage.getItem("proDUCTid")) || [];
+    proDuctids.push(item);
+    localStorage.setItem("proDUCTid", JSON.stringify(proDuctids));
+    dispatch(addTocart(item));
+  };
   // api fetching
   useEffect(() => {
     if (!id) return;
@@ -85,7 +95,10 @@ const ProductDetails = () => {
 
                 {/* Buttons */}
                 <div className="mt-6 flex gap-4 items-center">
-                  <button className="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+                  <button
+                    onClick={() => addToCartD(product.id)}
+                    className="bg-red-500 cursor-pointer text-white px-6 py-2 rounded hover:bg-red-600 transition"
+                  >
                     Add To Cart
                   </button>
                   <button className="p-3 border rounded-full hover:bg-gray-100">

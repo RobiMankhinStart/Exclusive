@@ -5,6 +5,8 @@ import { Link } from "react-router";
 import RelatedItemCard from "./RelatedItemCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { addTocart } from "../../ProductSlice";
+import { useDispatch } from "react-redux";
 const RelatedItems = ({ product }) => {
   // slider settings ..........
   var settings = {
@@ -44,6 +46,14 @@ const RelatedItems = ({ product }) => {
     ],
   };
 
+  const dispatch = useDispatch();
+
+  const addToCartD = (item) => {
+    const proDuctids = JSON.parse(localStorage.getItem("proDUCTid")) || [];
+    proDuctids.push(item);
+    localStorage.setItem("proDUCTid", JSON.stringify(proDuctids));
+    dispatch(addTocart(item));
+  };
   // fetching .............
   const [products, setProducts] = useState([]);
 
@@ -75,7 +85,11 @@ const RelatedItems = ({ product }) => {
           {/* .............slider......  */}
           <Slider {...settings}>
             {products?.slice(0, 9).map((item) => (
-              <RelatedItemCard key={item.id} item={item} />
+              <RelatedItemCard
+                addToCartD={() => addToCartD(item.id)}
+                key={item.id}
+                item={item}
+              />
             ))}
           </Slider>
           {/* ....slider ....... */}
