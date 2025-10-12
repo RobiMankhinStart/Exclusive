@@ -50,10 +50,10 @@ const Cart = ({ setCartOpen, cartOpen, reduxCardIds }) => {
         }`}
       >
         {/* Header */}
-        <div className="flex justify-between items-center p-5 border-b">
-          <div className="flex items-center w-[50%] justify-between">
+        <div className="flex justify-between md:w-[72%] lg:w-full items-center p-5">
+          <div className=" flex flex-wrap items-center w-[70%] md:gap-8 gap-6">
             <h2 className="text-xl font-semibold">Shopping Cart</h2>
-            <p className="font-semibold font-inter mt-1 text-[18px]">
+            <p className="font-medium font-inter mt-1 text-[16px]">
               <span>Total Items : </span>
               {reduxCardIds?.length || 0}
             </p>
@@ -65,7 +65,7 @@ const Cart = ({ setCartOpen, cartOpen, reduxCardIds }) => {
         </div>
 
         {/* Cart Items */}
-        <div className="flex-1 max overflow-y-scroll min-h-[340px] p-2 py-4">
+        <div className="border-t flex-1 max overflow-y-scroll min-h-[340px] p-2 py-4">
           {cartItems.map((item) => (
             <div
               key={item.id}
