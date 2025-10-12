@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaRegHeart, FaStar } from "react-icons/fa";
 import { IoEyeOutline } from "react-icons/io5";
+import { Link } from "react-router";
 
 const FlashSaleCard = ({ item, addToCart }) => {
   const [hid, setHid] = useState(false);
@@ -11,26 +12,29 @@ const FlashSaleCard = ({ item, addToCart }) => {
         onMouseLeave={() => setHid(false)}
         className="relative w-[200px] md:w-[270px]  h-[350px] flex flex-col justify-center gap-5 "
       >
-        <div className="absolute top-8 flex gap-[90px] md:gap-[150px] px-3">
+        <div className=" absolute top-6 flex gap-[90px] md:gap-[150px] px-3">
           <p className="bg-[#DB4444] h-7 rounded-md text-sm font-poppins flex items-center px-3 text-white">
             -30%
           </p>
-          <div className="flex flex-col items-center justify-center gap-4">
-            <button className="cursor-pointer hover:scale-110 duration-300 p-[5px] bg-white rounded-full">
-              <FaRegHeart className="text-[24px]" />
+          <div className="flex flex-col items-center justify-center gap-2">
+            <button className="cursor-pointer hover:scale-110 duration-300 p-1 bg-white rounded-full">
+              <FaRegHeart className="text-[20px]" />
             </button>
-            <button className="cursor-pointer hover:scale-110 duration-300 p-[5px] bg-white rounded-full">
-              <IoEyeOutline className="text-[24px]" />
+            <button className="cursor-pointer hover:scale-110 duration-300 p-1 bg-white rounded-full">
+              <IoEyeOutline className="text-[20px]" />
             </button>
           </div>
         </div>
-        <div className="w-full flex py-[35px] px-10 rounded-md bg-[#f5f5f5]">
+        <Link
+          to={`/productdetails/${item.id}`}
+          className="w-full flex py-[35px] px-10 rounded-md bg-[#f5f5f5]"
+        >
           <img
             className=" w-[142px] md:w-[170px]"
             src={item.images[0]}
             alt="slider_IMG"
           />
-        </div>
+        </Link>
 
         <button
           onClick={addToCart}

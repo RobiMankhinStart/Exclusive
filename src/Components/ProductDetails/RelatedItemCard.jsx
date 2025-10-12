@@ -9,7 +9,7 @@ const RelatedItemCard = ({ item }) => {
       <div
         onMouseEnter={() => setHid(true)}
         onMouseLeave={() => setHid(false)}
-        className="relative w-[270px]  h-[350px] flex flex-col justify-center gap-5 "
+        className="relative md:w-[270px] w-[200px]  h-[350px] flex flex-col justify-center gap-5 "
       >
         <div className="absolute top-8 flex gap-[150px] px-3">
           <p className="bg-[#DB4444] h-7 rounded-md text-sm font-poppins flex items-center px-3 text-white">
@@ -24,8 +24,12 @@ const RelatedItemCard = ({ item }) => {
             </button>
           </div>
         </div>
-        <div className="w-full fle py-[35px] px-10 rounded-md bg-[#f5f5f5]">
-          <img className=" w-[172px]" src={item.images[0]} alt="slider_IMG" />
+        <div className="w-full flex py-[35px] px-10 rounded-md bg-[#f5f5f5]">
+          <img
+            className="w-[142px] md:w-[170px] "
+            src={item.images[0]}
+            alt="slider_IMG"
+          />
         </div>
 
         <button
