@@ -19,7 +19,7 @@ const MobileNavbar = () => {
   const [options, setOptions] = useState(false);
   console.log(options);
   return (
-    <div className="bg-white fixed top-[-5%] left-0 right-0 z-20 py-[27px] lg:hidden block dark:text-white border-b border-[#b3b3b3]">
+    <div className="bg-white fixed top-[-5%] left-0 right-0 z-20 py-[15px] lg:hidden block dark:text-white border-b border-[#b3b3b3]">
       <div className="top bg-black py-3 ">
         <div className="container flex flex-col gap-1 items-center">
           <div className=" flex justify-center flex-wrap items-center gap-5 ">
@@ -46,22 +46,44 @@ const MobileNavbar = () => {
               to={"/"}
               className="hover:scale-110 duration-300 cursor-pointer text-[25px] font-inter font-semibold"
             >
-              <span className="font-bold text-[27px] text-gray-600 font-poppins">
+              <span className="font-bold text-[22px] md:text-[28px] text-gray-600 font-poppins">
                 E
               </span>
               x
-              <span className="font-bold text-[27px] text-gray-600 font-poppins">
+              <span className="font-bold text-[22px] md:text-[28px] text-gray-600 font-poppins">
                 C
               </span>
               lu
-              <span className="font-bold text-[27px] text-gray-600 font-poppins">
+              <span className="font-bold text-[22px] md:text-[28px] text-gray-600 font-poppins">
                 S
               </span>
               ive
             </Link>
+            <div className="flex items-center gap-4 md:gap-6">
+              <div className="text-[24px] md:text-[28px] text-black cursor-pointer hover:text-[#989898] hover:scale-110 duration-200">
+                <IoMdHeartEmpty />
+              </div>
+
+              {/* Cart Toggle */}
+              <div
+                onClick={() => setCartOpen(!cartOpen)}
+                className="text-[24px] md:text-[28px] text-black cursor-pointer hover:text-[#989898] hover:scale-110 duration-200 relative"
+              >
+                <IoCartOutline />
+                {/* Cart Count Example */}
+                <span className="absolute -top-1 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {reduxCardIds?.length || 0}
+                </span>
+              </div>
+              <div className="text-[24px] md:text-[28px] text-black cursor-pointer hover:text-[#989898] hover:scale-110 duration-200">
+                <Link to={"/login"}>
+                  <FiUser />
+                </Link>
+              </div>
+            </div>
             <div
               onClick={() => setOptions(!options)}
-              className="cursor-pointer text-[28px]"
+              className="cursor-pointer text-[28px] md:mr-16"
             >
               {options ? <MdOutlineCancelPresentation /> : <RxHamburgerMenu />}
             </div>
@@ -74,28 +96,6 @@ const MobileNavbar = () => {
               placeholder="What are you looking for?"
             />
             <CiSearch className="text-[24px] text-black" />
-          </div>
-          <div className="flex items-center gap-6">
-            <div className="text-[32px] text-black cursor-pointer hover:text-[#989898] hover:scale-110 duration-200">
-              <IoMdHeartEmpty />
-            </div>
-
-            {/* Cart Toggle */}
-            <div
-              onClick={() => setCartOpen(!cartOpen)}
-              className="text-[32px] text-black cursor-pointer hover:text-[#989898] hover:scale-110 duration-200 relative"
-            >
-              <IoCartOutline />
-              {/* Cart Count Example */}
-              <span className="absolute -top-1 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                {reduxCardIds?.length || 0}
-              </span>
-            </div>
-            <div className="text-[32px] text-black cursor-pointer hover:text-[#989898] hover:scale-110 duration-200">
-              <Link to={"/login"}>
-                <FiUser />
-              </Link>
-            </div>
           </div>
         </nav>
       </div>
