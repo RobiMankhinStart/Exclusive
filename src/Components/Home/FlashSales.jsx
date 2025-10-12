@@ -21,7 +21,7 @@ const FlashSales = ({ products }) => {
       {
         breakpoint: 1280,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
@@ -35,7 +35,7 @@ const FlashSales = ({ products }) => {
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
