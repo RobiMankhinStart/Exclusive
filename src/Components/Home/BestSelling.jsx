@@ -78,7 +78,7 @@ const BestSelling = ({ products }) => {
           </div>
           {/* .............slider......  */}
           <Slider {...settings}>
-            {products.slice(9, 15).map((item) => (
+            {products?.slice(9, 15).map((item) => (
               <FlashSaleCard
                 addToCart={() => addToCart(item.id)}
                 key={item.id}

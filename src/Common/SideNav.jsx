@@ -2,13 +2,14 @@ import React from "react";
 import { Link } from "react-router";
 
 const SideNav = ({ options, setOptions }) => {
-  if (!options) return null; // don't render anything if closed
+  // if (!options) return null;
+  // don't render anything if closed
 
   return (
     // Background overlay
     <div
       onClick={() => setOptions(false)}
-      className="fixed inset-0 bg-[#00000086] bg-opacity-40 z-40"
+      className={`${options ? "opacity-100 visible" : "opacity-0 invisible"} fixed inset-0 bg-[#00000086] bg-opacity-40 z-40 transition-all duration-300 `}
     >
       {/* Sidebar */}
       <div

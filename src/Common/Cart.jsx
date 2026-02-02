@@ -29,7 +29,7 @@ const Cart = ({ setCartOpen, cartOpen, reduxCardIds }) => {
 
   // ................remove from cart .........
   const removeItem = (proID) => {
-    const updatedIDs = localIds.filter((item) => item !== proID);
+    const updatedIDs = localIds?.filter((item) => item !== proID);
     localStorage.setItem("proDUCTid", JSON.stringify(updatedIDs));
     dispatch(removeFromCart(proID));
   };
@@ -66,7 +66,7 @@ const Cart = ({ setCartOpen, cartOpen, reduxCardIds }) => {
 
         {/* Cart Items */}
         <div className="border-t flex-1 max overflow-y-scroll min-h-[340px] p-2 py-4">
-          {cartItems.map((item) => (
+          {cartItems?.map((item) => (
             <div
               key={item.id}
               className="flex items-center justify-between mb-6"

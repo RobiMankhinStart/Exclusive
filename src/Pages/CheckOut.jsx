@@ -20,7 +20,7 @@ const CheckOut = () => {
   const total = subtotal;
 
   const removeItem = (id) => {
-    const updated = localIds.filter((item) => item !== id);
+    const updated = localIds?.filter((item) => item !== id);
     localStorage.setItem("proDUCTid", JSON.stringify(updated));
     window.location.reload();
   };
@@ -36,7 +36,7 @@ const CheckOut = () => {
 
         {/* Order Summary */}
         <div className="bg-white p-6 rounded-lg shadow space-y-5">
-          {cartItems.map((item) => (
+          {cartItems?.map((item) => (
             <div
               key={item.id}
               className="flex items-center justify-between border-b pb-3"

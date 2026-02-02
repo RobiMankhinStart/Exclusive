@@ -41,7 +41,7 @@ const Shop = () => {
           </h3>
 
           <div className="flex flex-wrap justify-center items-center gap-12">
-            {products.map((item) => (
+            {products?.map((item) => (
               <ShopCard
                 key={item.id}
                 addToCart={() => addToCart(item.id)}
